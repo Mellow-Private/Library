@@ -29,11 +29,11 @@ local Library = {
 
     HudRegistry = {};
 
-    FontColor = Color3.fromRGB(210, 210, 230);
-    MainColor = Color3.fromRGB(18, 18, 24);
-    BackgroundColor = Color3.fromRGB(13, 13, 18);
-    AccentColor = Color3.fromRGB(100, 60, 200);
-    OutlineColor = Color3.fromRGB(40, 40, 55);
+    FontColor = Color3.fromRGB(240, 200, 200);       -- pale blood white-red
+    MainColor = Color3.fromRGB(18, 8, 8);             -- very dark blood background
+    BackgroundColor = Color3.fromRGB(12, 4, 4);       -- near-black deep red
+    AccentColor = Color3.fromRGB(180, 20, 30);         -- deep blood red
+    OutlineColor = Color3.fromRGB(60, 15, 15);         -- dark red outline
     RiskColor = Color3.fromRGB(255, 50, 50),
 
     Black = Color3.new(0, 0, 0);
@@ -3024,7 +3024,7 @@ function Library:CreateWindow(...)
 
     -- Neon glow effect via UIStroke
     Library:Create('UIStroke', {
-        Color = Color3.fromRGB(255, 0, 40);
+        Color = Color3.fromRGB(180, 0, 20);
         Thickness = 0.5;
         Transparency = 0.0;
         ApplyStrokeMode = Enum.ApplyStrokeMode.Contextual;
@@ -3133,7 +3133,7 @@ function Library:CreateWindow(...)
             Position = UDim2.new(0, 0, 0, 0);
             Size = UDim2.new(1, 0, 1, -1);
             Text = Name;
-            TextColor3 = Color3.fromRGB(120, 115, 140);
+            TextColor3 = Color3.fromRGB(140, 70, 70);
             TextSize = 15;
             ZIndex = 1;
             Parent = TabButton;
@@ -3224,7 +3224,7 @@ function Library:CreateWindow(...)
             }):Play();
             -- White text on selected
             TweenService:Create(TabButtonLabel, TweenInfo.new(0.12), {
-                TextColor3 = Color3.fromRGB(240, 238, 255);
+                TextColor3 = Color3.fromRGB(255, 210, 210);
             }):Play();
             TabButton.BackgroundColor3 = Library.MainColor;
             Library.RegistryMap[TabButton].Properties.BackgroundColor3 = 'MainColor';
@@ -3239,7 +3239,7 @@ function Library:CreateWindow(...)
             Blocker.BackgroundTransparency = 1;
             -- Dim text on deselected
             TweenService:Create(TabButtonLabel, TweenInfo.new(0.12), {
-                TextColor3 = Color3.fromRGB(120, 115, 140);
+                TextColor3 = Color3.fromRGB(140, 70, 70);
             }):Play();
             TabButton.BackgroundColor3 = Library.BackgroundColor;
             Library.RegistryMap[TabButton].Properties.BackgroundColor3 = 'BackgroundColor';
