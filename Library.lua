@@ -3007,6 +3007,45 @@ function Library:CreateWindow(...)
         Parent = Inner;
     });
 
+    -- Right-side neon red glow title
+    local SideTitle = Library:Create('TextLabel', {
+        AnchorPoint = Vector2.new(1, 0);
+        BackgroundTransparency = 1;
+        Position = UDim2.new(1, -7, 0, 0);
+        Size = UDim2.new(0, 200, 0, 25);
+        Text = 'Mogging lilac';
+        TextColor3 = Color3.fromRGB(255, 30, 60);
+        TextSize = 13;
+        Font = Enum.Font.GothamBold;
+        TextXAlignment = Enum.TextXAlignment.Right;
+        ZIndex = 2;
+        Parent = Inner;
+    });
+
+    -- Neon glow effect via UIStroke
+    Library:Create('UIStroke', {
+        Color = Color3.fromRGB(255, 0, 40);
+        Thickness = 0.5;
+        Transparency = 0.0;
+        ApplyStrokeMode = Enum.ApplyStrokeMode.Contextual;
+        Parent = SideTitle;
+    });
+
+    -- Pulsing glow animation
+    local glowUp = true
+    game:GetService('RunService').Heartbeat:Connect(function(dt)
+        if not SideTitle or not SideTitle.Parent then return end
+        local stroke = SideTitle:FindFirstChildOfClass('UIStroke')
+        if not stroke then return end
+        if glowUp then
+            stroke.Transparency = math.max(0, stroke.Transparency - dt * 1.5)
+            if stroke.Transparency <= 0 then glowUp = false end
+        else
+            stroke.Transparency = math.min(0.6, stroke.Transparency + dt * 1.5)
+            if stroke.Transparency >= 0.6 then glowUp = true end
+        end
+    end)
+
     local MainSectionOuter = Library:Create('Frame', {
         BackgroundColor3 = Library.BackgroundColor;
         BorderColor3 = Library.OutlineColor;
